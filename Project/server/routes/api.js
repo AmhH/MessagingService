@@ -3,9 +3,9 @@ const router = express.Router();
 /*const MongoClient = require('mongodb').MongoClient;
 const ObjectID = require('mongodb').ObjectID;*/
 const User = require('./model').User;
-const aman = require('./model1').aman;
-const ameha = require('./model1').ameha;
-const meera = require('./model1').mera;
+const aman = require('./model').aman;
+const ameha = require('./model').ameha;
+const mera = require('./model').mera;
 
 /*// Connect MessaginService
 const connection = (closure) => {
@@ -32,13 +32,26 @@ let response = {
 
 // Get users
 router.get('/users', (req, res) => {
-        aman.save(()=>{
+        /*aman.save((err)=>{
+            if(err) throw err;
+        });
+        ameha.save((err)=>{
+            if(err) throw err;
+        });
+        mera.save((err)=>{
             if(err) throw err;
         })
-        User.find().toArray(function(err, result) {
-                if (err) throw err;
-                res.json(result);
+*/
+        User.find({'fName': 'ameha'})
+            .exec(function(err, data){
+                if(err){
+                     res.json(err)
+                } else {
+                     res.json(data)
+            }
         });
+
+
      /*req.msDB.collection('users').find().toArray(function(err, result) {
                 if (err) throw err;
                 res.json(result);
