@@ -31,14 +31,14 @@
     "debug": "~2.6.3",
     "ejs": "~2.5.6",
     "express": "^4.15.5",
-<<<<<<< HEAD
+/*<<<<<<< HEAD*/
     "mongodb": "^2.2.31",
     "mongoose": "^4.11.13",
     "mongoskin": "^2.1.0",
     "morgan": "~1.8.1",
-=======
+/*=======*/
     "firebase": "^4.4.0",
->>>>>>> 44eb598d6e2ffd05e1895a2a3b47d866b3a79e4b
+/*>>>>>>> 44eb598d6e2ffd05e1895a2a3b47d866b3a79e4b*/
     "rxjs": "^5.4.2",
     "serve-favicon": "~2.4.2",
     "zone.js": "^0.8.14"

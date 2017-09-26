@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongo = require('mongoskin');
+/*var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/MessaginService');*/
 
 const api = require('./server/routes/api');
 
@@ -18,13 +20,14 @@ app.set('view engine', 'ejs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 //create common db connection
-app.use((req, res, next)=>{
-  var db = mongo.db('mongodb://localhost:27017/MessaginService', { native_parser: true });
+/*app.use((req, res, next)=>{
+  //var db = mongo.db('mongodb://localhost:27017/MessaginService', { native_parser: true });
+  var db = mongoose.connect('mongodb://localhost:27017/MessaginService');
   req.msDB = db;
   console.log(req.msDB.name);
   next();
   db.close();
-});
+});*/
 
 app.use(logger('dev'));
 app.use(bodyParser.json());

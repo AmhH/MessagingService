@@ -1,7 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const MongoClient = require('mongodb').MongoClient;
-const ObjectID = require('mongodb').ObjectID;
+/*const MongoClient = require('mongodb').MongoClient;
+const ObjectID = require('mongodb').ObjectID;*/
+const User = require('./model').User;
+const aman = require('./model1').aman;
+const ameha = require('./model1').ameha;
+const meera = require('./model1').mera;
 
 /*// Connect MessaginService
 const connection = (closure) => {
@@ -28,10 +32,17 @@ let response = {
 
 // Get users
 router.get('/users', (req, res) => {
-     req.msDB.collection('users').find({'name':'Hello'}).toArray(function(err, result) {
+        aman.save(()=>{
+            if(err) throw err;
+        })
+        User.find().toArray(function(err, result) {
                 if (err) throw err;
                 res.json(result);
         });
+     /*req.msDB.collection('users').find().toArray(function(err, result) {
+                if (err) throw err;
+                res.json(result);
+        });*/
 });
 
 module.exports = router;
