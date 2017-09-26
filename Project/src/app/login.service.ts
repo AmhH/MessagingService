@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt'
+import { Router } from '@angular/router';
 declare var Auth0Lock: any;
 
 @Injectable()
 export class LoginService {
 
   lock = new Auth0Lock("_YcCvmGJcnuuXT7AYA_Jy6CdcGFRGzRl", "mwaproject.auth0.com", {});
-  constructor() {
+  constructor(private route: Router) {
     this.lock.on("authenticated", authResult => {            
       this.lock.getProfile(authResult.idToken, function (error: any, profile: any) {
           if (error) {
@@ -15,12 +16,8 @@ export class LoginService {
           //Set Profile
           localStorage.setItem("profile", JSON.stringify(profile));
           //Set Token
-
-
-         // localStorage.setItem("id_token", authResult.idToken);
-
-
-
+          localStorage.setItem("id_token", authResult.idToken);
+          //
     });
   }); 
    }

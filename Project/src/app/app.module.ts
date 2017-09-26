@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { RouterModule, Routes} from '@angular/router';
 import { AppComponent } from './app.component';
 import { Http, RequestOptions } from '@angular/http';
 //firebase modules
@@ -14,6 +14,8 @@ import { provideAuth, AuthHttp, AuthConfig } from 'angular2-jwt';
 
 import { InboxComponent } from './inbox/inbox.component';
 import { LoginService } from './login.service';
+import { LogoutComponent } from './logout/logout.component';
+import { LogedinComponent } from './logedin/logedin.component';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions ){
     return new AuthHttp(new AuthConfig({
@@ -21,7 +23,14 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions ){
     }), http, options);
 }
 
-
+const My_Routes: Routes = [
+  {path: '', redirectTo:'home',pathMatch:'full'},
+  {path: 'home', component:AppComponent},
+  {path: 'logedin', component:LogedinComponent, children: [
+    {path: 'inbox', component:InboxComponent},
+    {path: 'logout', component:LogoutComponent}
+  ]},
+];
 export const firebaseConfig ={
   apiKey: "AIzaSyApuY_WppNagNRA9PhdfPba0vnT0xdRfEI",
   authDomain: "mwaproject-6aa88.firebaseapp.com",
@@ -33,15 +42,18 @@ export const firebaseConfig ={
 @NgModule({
   declarations: [
     AppComponent,
-    InboxComponent
+    InboxComponent,
+    LogoutComponent,
+    LogedinComponent
   ],
   imports: [
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    RouterModule.forRoot(My_Routes)
   ],
   providers: [{provide: AuthHttp, useFactory: authHttpServiceFactory, deps:[Http, RequestOptions]},LoginService],
-  bootstrap: [InboxComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
