@@ -15,13 +15,12 @@ export class LoginService {
           //Set Profile
           localStorage.setItem("profile", JSON.stringify(profile));
           //Set Token
-<<<<<<< HEAD
+
 
          // localStorage.setItem("id_token", authResult.idToken);
 
-=======
-          //localStorage.setItem("id_token", authResult.idToken);
->>>>>>> a903db07f1aa51c1f5e03821045af0acf2c18b38
+
+
     });
   }); 
    }
