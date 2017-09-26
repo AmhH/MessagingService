@@ -21,8 +21,7 @@ app.disable('x-poweres-by');
 
 //create common db connection
 /*app.use((req, res, next)=>{
-  //var db = mongo.db('mongodb://localhost:27017/MessaginService', { native_parser: true });
-  var db = mongoose.connect('mongodb://localhost:27017/MessaginService');
+  var db = mongo.db('mongodb://localhost:27017/MessaginService', { native_parser: true });
   req.msDB = db;
   console.log(req.msDB.name);
   next();
