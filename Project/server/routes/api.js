@@ -32,7 +32,7 @@ let response = {
 
 // Get users
 router.get('/users', (req, res) => {
-        /*aman.save((err)=>{
+        aman.save((err)=>{
             if(err) throw err;
         });
         ameha.save((err)=>{
@@ -41,12 +41,13 @@ router.get('/users', (req, res) => {
         mera.save((err)=>{
             if(err) throw err;
         })
-*/
-        User.find({'fName': 'ameha'})
+
+        User.find()
             .exec(function(err, data){
                 if(err){
                      res.json(err)
                 } else {
+                     console.log(data.length)
                      res.json(data)
             }
         });

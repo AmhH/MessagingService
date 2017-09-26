@@ -5,17 +5,17 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongo = require('mongoskin');
-/*var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/MessaginService');*/
 
 const api = require('./server/routes/api');
+const mail = require('./server/routes/mail');
+const contact = require('./server/routes/contact');
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, './server/views'));
 app.set('view engine', 'ejs');
-
+app.disable('x-poweres-by');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
@@ -35,8 +35,22 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, './server/public')));
 
+// Authentication middleware provided by express-jwt.
+// This middleware will check incoming requests for a valid JWT on any routes that it is applied to.
+/*var authCheck = jwt({
+  secret: new Buffer('YOUR_AUTH0_SECRET', 'base64'),
+  audience: 'YOUR_AUTH0_CLIENT_ID'
+});
+
+//how to check if authenticated
+app.get('/api/users', authCheck, function(req, res) {
+  res.json(users);
+});*/
+
 // API location
 app.use('/api', api);
+app.use('/mail', mail);
+//app.use('/contact', contact);
 
 // Send all other requests to the Angular app
 app.get('*', (req, res) => {

@@ -53,8 +53,8 @@ var Contact = mongoose.model('Contact', contactSchema);  */
 var User = mongoose.model('User', userSchema);
 
 var aman = new User({
-    fName: 'aman',
-    lName: 'aman',
+    fName: 'Aman',
+    lName: 'Woldtensae',
     dob: new Date('09/09/2000'),
     phone: '123456789',
     /*userCredential: credential1,
@@ -63,8 +63,8 @@ var aman = new User({
 });
 
 var ameha = new User({
-    fName: 'ameha',
-    lName: 'ameha',
+    fName: 'Ameha',
+    lName: 'Amsalu',
     dob: new Date('09/09/2000'),
     phone: '123456789',
     /*userCredential: credential2,
@@ -73,8 +73,8 @@ var ameha = new User({
 });
 
 var mera = new User({
-    fName: 'mera',
-    lName: 'mera',
+    fName: 'Mera',
+    lName: 'Habte',
     dob: new Date('09/09/2000'),
     phone: '123456789',
     /*userCredential: credential3,
@@ -106,23 +106,23 @@ mera.address = {
 };
 
 aman.userCredential = {
-    userName: 'aman',
-    password: 'aman'
+    userName: 'woldtensae.aman@gmail.com',
+    password: 'woldtensae.aman@gmail.com'
 };
 
 ameha.userCredential = {
-    userName: 'ameha',
-    password: 'ameha'
+    userName: 'abaams78@gmail.com',
+    password: 'abaams78@gmail.com'
 };
 
 mera.userCredential = {
-    userName: 'mera',
-    password: 'mera'
+    userName: 'amanest795@gmail.com',
+    password: 'amanest795@gmail.com'
 };
 
 aman.messages.push({
-    mailer: 'ameha',
-    receiver: 'aman',
+    mailer: 'abaams78@gmail.com',
+    receiver: 'woldtensae.aman@gmail.com',
     subject: 'Hello',
     content: 'Welcome To our mailing service',
     date: new Date(),
@@ -132,8 +132,8 @@ aman.messages.push({
 });
 
 ameha.messages.push({
-    mailer: 'ameha',
-    receiver: 'aman',
+    mailer: 'abaams78@gmail.com',
+    receiver: 'woldtensae.aman@gmail.com',
     subject: 'Hello',
     content: 'Welcome To our mailing service',
     date: new Date(),
@@ -143,8 +143,8 @@ ameha.messages.push({
 });
 
 ameha.messages.push({
-    mailer: 'aman',
-    receiver: 'ameha',
+    mailer: 'woldtensae.aman@gmail.com',
+    receiver: 'abaams78@gmail.com',
     subject: 'Thank you',
     content: 'I Love your application and it is a funtastic idea ',
     date: new Date(),
@@ -154,8 +154,8 @@ ameha.messages.push({
 });
 
 aman.messages.push({
-    mailer: 'aman',
-    receiver: 'ameha',
+    mailer: 'woldtensae.aman@gmail.com',
+    receiver: 'abaams78@gmail.com',
     subject: 'Thank you',
     content: 'I Love your application and it is a funtastic idea ',
     date: new Date(),
@@ -165,8 +165,8 @@ aman.messages.push({
 });
 
 ameha.messages.push({
-    mailer: 'aman',
-    receiver: 'ameha',
+    mailer: 'woldtensae.aman@gmail.com',
+    receiver: 'abaams78@gmail.com',
     subject: 'Notication',
     content: 'how to use our app ',
     date: new Date(),
@@ -176,8 +176,8 @@ ameha.messages.push({
 });
 
 aman.messages.push({
-    mailer: 'ameha',
-    receiver: 'aman',
+    mailer: 'abaams78@gmail.com',
+    receiver: 'woldtensae.aman@gmail.com',
     subject: 'Notication',
     content: 'how to use our app ',
     date: new Date(),
