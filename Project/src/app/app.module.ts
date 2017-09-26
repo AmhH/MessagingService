@@ -13,6 +13,7 @@ import { provideAuth, AuthHttp, AuthConfig } from 'angular2-jwt';
 
 
 import { InboxComponent } from './inbox/inbox.component';
+import { LoginService } from './login.service';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions ){
     return new AuthHttp(new AuthConfig({
@@ -40,7 +41,7 @@ export const firebaseConfig ={
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [{provide: AuthHttp, useFactory: authHttpServiceFactory, deps:[Http, RequestOptions]}],
+  providers: [{provide: AuthHttp, useFactory: authHttpServiceFactory, deps:[Http, RequestOptions]},LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

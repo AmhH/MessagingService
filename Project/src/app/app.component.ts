@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoginService } from './login.service';
 //import { AngularFireDatabase } from 'angularfire2/database';
 //import { AngularFireAuth} from 'angularfire2/auth';
 
@@ -9,5 +10,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-  
+  constructor(private loginService: LoginService){
+    loginService.login();
+  }
 }
