@@ -42,6 +42,6 @@ export const firebaseConfig ={
     AngularFireAuthModule
   ],
   providers: [{provide: AuthHttp, useFactory: authHttpServiceFactory, deps:[Http, RequestOptions]},LoginService],
-  bootstrap: [AppComponent]
+  bootstrap: [InboxComponent]
 })
 export class AppModule { }
