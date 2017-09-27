@@ -18,6 +18,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { LogedinComponent } from './logedin/logedin.component';
 //services
 import { InboxService } from "./service/inbox.service";
+import { ComposeComponent } from './compose/compose.component';
 
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions ){
@@ -47,7 +48,8 @@ export const firebaseConfig ={
     AppComponent,
     InboxComponent,
     LogoutComponent,
-    LogedinComponent
+    LogedinComponent,
+    ComposeComponent
   ],
   imports: [
     BrowserModule, HttpModule,
