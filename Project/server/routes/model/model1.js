@@ -1,3 +1,4 @@
+//@Author: Ameha
 const User = require('./model').User;
 const Address = require('./model').Address;
 const Credential = require('./model').Credential;

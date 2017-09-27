@@ -1,7 +1,8 @@
+//@Author: Ameha
 const express = require('express');
 const router = express.Router();
 var jwt = require('express-jwt');
-const User = require('./model').User;
+const User = require('./model/model').User;
 
 // Authentication middleware provided by express-jwt.
 // This middleware will check incoming requests for a valid JWT on any routes that it is applied to.
@@ -11,7 +12,7 @@ var authCheck = jwt({
 });
 
 // Get all contacts
-router.get('/:username',/*authCheck, */(req, res) => {
+router.get('/:username',(req, res) => {
         User.find({'userCredential.userName': req.params.username}, {'contacts':1, '_id':0})
             .exec(function(err, data){
                 if(err){
@@ -37,7 +38,8 @@ router.get('/:username',/*authCheck, */(req, res) => {
 
 });*/
 
-router.post('/:username',/*authCheck, */(req, res) => {
+//add contacts to contact book
+router.post('/:username',(req, res) => {
     User.findOneAndUpdate({'userCredential.userName': req.body.username},
                             {'$push':{'contacts':{
                                 fullname: req.body.fullname,
@@ -49,7 +51,7 @@ router.post('/:username',/*authCheck, */(req, res) => {
                             });
     });
 
-router.get('/search',/*authCheck, */(req, res) => {
+router.get('/search',(req, res) => {
     User.find({})
 });
 
