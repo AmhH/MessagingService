@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongo = require('mongoskin');
 var cors = require('cors');
+var jwt = require('express-jwt');
+var jwks = require('jwks-rsa');
 
 const api = require('./server/routes/api');
 const mail = require('./server/routes/mail');
@@ -20,15 +22,6 @@ app.disable('x-poweres-by');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-//create common db connection
-/*app.use((req, res, next)=>{
-  var db = mongo.db('mongodb://localhost:27017/MessaginService', { native_parser: true });
-  req.msDB = db;
-  console.log(req.msDB.name);
-  next();
-  db.close();
-});*/
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -38,15 +31,24 @@ app.use(cors());
 
 // Authentication middleware provided by express-jwt.
 // This middleware will check incoming requests for a valid JWT on any routes that it is applied to.
-/*var authCheck = jwt({
-  secret: new Buffer('YOUR_AUTH0_SECRET', 'base64'),
-  audience: 'YOUR_AUTH0_CLIENT_ID'
+var jwtCheck = jwt({
+    secret: jwks.expressJwtSecret({
+        cache: true,
+        rateLimit: true,
+        jwksRequestsPerMinute: 5,
+        jwksUri: "https://mwaproject.auth0.com/.well-known/jwks.json"
+    }),
+    audience: 'http://localhost:9999',
+    issuer: "https://mwaproject.auth0.com/",
+    algorithms: ['RS256']
 });
 
+app.use(jwtCheck);
+
 //how to check if authenticated
-app.get('/api/users', authCheck, function(req, res) {
+app.get('/api/users',/* authCheck, */function(req, res) {
   res.json(users);
-});*/
+});
 
 // API location
 app.use('/api', api);

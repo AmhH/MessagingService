@@ -1,0 +1,14 @@
+<table>
+  <tr>
+    <td>
+      <form [formGroup] = "myForm" (ngSubmit)="onSubmit()" >
+        <p><label>TO: <input type="text" formControlName= "receiver"/></label></p>
+        <div class="errors" *ngIf="!myForm.controls['receiver'].valid">Required</div>
+        <p><label>Subject: <input type="text" formControlName= "subject"/></label></p>
+        <div class="errors" *ngIf="!myForm.controls['subject'].valid">Required</div>
+        <p><textarea rows="10" cols="50" formControlName= "content"></textarea></p>
+        <p><input type="submit" [disabled]="!myForm.valid" value="Send"/></p>
+      </form>
+    </td>
+  </tr>
+</table>

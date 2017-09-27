@@ -20,9 +20,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { LogedinComponent } from './logedin/logedin.component';
 //services
 import { InboxService } from "./service/inbox.service";
-import { SentComponent } from './sent/sent.component';
-import { DetailComponent } from './detail/detail.component';
-import { SentMailsService } from './service/sent-mails.service';
+import { ComposeComponent } from './compose/compose.component';
 
 // export function authHttpServiceFactory(http: Http, options: RequestOptions ){
 //     return new AuthHttp(new AuthConfig({
@@ -63,8 +61,12 @@ export const firebaseConfig ={
     InboxComponent,
     LogoutComponent,
     LogedinComponent,
+<<<<<<< HEAD
     SentComponent,
     DetailComponent
+=======
+    ComposeComponent
+>>>>>>> 9f7c4415b72b8627052e01cf7e1b3f07238363e2
   ],
   imports: [
     BrowserModule, HttpModule,
