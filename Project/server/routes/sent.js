@@ -19,11 +19,11 @@ router.get('/:username', (req, res) => {
     });
 
 //send email 
-router.post('/:username',(req, res) => {
+router.post('/',(req, res) => {
     //add to message array of the receiver and set to unread
     User.findOneAndUpdate({'userCredential.userName': req.body.receiver},
                             {'$push':{'messages':{
-                                mailer: req.params.username,
+                                mailer: req.body.email,
                                 receiver: req.body.receiver,
                                 subject: req.body.subject,
                                 content: req.body.content,
@@ -37,7 +37,7 @@ router.post('/:username',(req, res) => {
                             });
 
     //add to message array of the sender and set to sent item
-    User.findOneAndUpdate({'userCredential.userName': req.params.username},
+    User.findOneAndUpdate({'userCredential.userName': req.body.email},
                             {'$push':{'messages':{
                                 mailer: req.body.mailer,
                                 receiver: req.body.receiver,

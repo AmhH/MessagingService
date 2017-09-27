@@ -20,7 +20,7 @@ router.get('/:username', (req, res) => {
     });
 
 //delete email: when deleting change the messege label property to trash from other labels 
-router.post('/delete/:id', (req,res) => {
-    User.update({'messages._id': new ObjectId(req.params._id)},{'$set':{'messages.$.label':'trash'}})
+router.post('/delete', (req,res) => {
+    User.update({'messages._id': new ObjectId(req.body.id)},{'$set':{'messages.$.label':'trash'}})
 });
 module.exports = router;

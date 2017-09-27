@@ -35,13 +35,13 @@ router.get('/:username',  (req, res) => {
     });
 
 //unread email: when unreading change the messege isread property to false from false 
-router.post('/unread/:id', (req,res) => {
-    User.update({'messages._id': new ObjectId(req.params._id)},{'$set':{'messages.$.isread':false}})
+router.post('/unread', (req,res) => {
+    User.update({'messages._id': new ObjectId(req.body.id)},{'$set':{'messages.$.isread':false}})
 });
 
 //read email: when reading change the messege isread property to true from false
-router.post('/read/:_id', (req,res) => {
-    User.update({'messages._id': new ObjectId(req.params._id)},{'$set':{'messages.$.isread':true}})
+router.post('/read', (req,res) => {
+    User.update({'messages._id': new ObjectId(req.body.id)},{'$set':{'messages.$.isread':true}})
 });
 
 module.exports = router;
