@@ -8,8 +8,8 @@
           <tbody>
             <tr *ngFor = "let mail of inboxUserMail; let num = index">
               <td><input type="checkbox"></td>
-              <td><a [routerLink] = "['detail', mail[num].messages]">{{ mail['mailer'] }}</a></td>
-              <td><a [routerLink] = "['detail', mail[num].messages]">{{mail['subject'] }}</a></td>
+              <td><a [routerLink] = "['detail', mail[num].messages]">{{ mail[num].messages.mailer }}</a></td>
+              <td><a [routerLink] = "['detail', mail[num].messages]">{{mail[num].messages.subject }}</a></td>
             </tr>
           </tbody>
         </table>

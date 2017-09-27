@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
 //import { AuthHttp } from '@angular/http';
-import { Http } from '@angular/http';
+import { AuthHttp } from 'angular2-jwt';
+import { AuthService } from '../auth/auth.service';
 //import { map } from 'rxjs'
 @Injectable()
 export class InboxService {
 private email:string;
 private fullUrl:string;
-private userProfile: any;
-  constructor(private http: Http) {
-    this.userProfile= localStorage.getItem("profile");
-    this.email = JSON.parse(this.userProfile)['email'];
+  constructor(private http: AuthHttp, private authService: AuthService ) {
+    
+console.log(this.authService.getUser());   
+    this.email = this.authService.getUser().idTokenPayload.name;
+    console.log(this.email + " asdfasdas")  ;
     this.fullUrl = 'http://localhost:9999/mail/inbox/' + this.email; 
   }
   getInboxData(){
-    return this.http.get(this.fullUrl);
+    return this.http.get(this.fullUrl,);
   }
 }

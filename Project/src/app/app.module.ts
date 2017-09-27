@@ -18,9 +18,12 @@ import { InboxComponent } from './inbox/inbox.component';
 import { LoginService } from './login.service';
 import { LogoutComponent } from './logout/logout.component';
 import { LogedinComponent } from './logedin/logedin.component';
+import { DetailComponent } from "./detail/detail.component";
+import { SentComponent } from "./sent/sent.component";
 //services
 import { InboxService } from "./service/inbox.service";
 import { ComposeComponent } from './compose/compose.component';
+import { SentMailsService } from "./service/sent-mails.service";
 
 // export function authHttpServiceFactory(http: Http, options: RequestOptions ){
 //     return new AuthHttp(new AuthConfig({
@@ -30,7 +33,7 @@ import { ComposeComponent } from './compose/compose.component';
 
 export function authHttpServiceFactory(http: Http, options: RequestOptions) {
   return new AuthHttp(new AuthConfig({
-    tokenGetter: (() => localStorage.getItem('access_token'))
+    tokenGetter: (() => localStorage.getItem('id_token'))
   }), http, options);
 }
 
@@ -61,12 +64,8 @@ export const firebaseConfig ={
     InboxComponent,
     LogoutComponent,
     LogedinComponent,
-<<<<<<< HEAD
     SentComponent,
     DetailComponent
-=======
-    ComposeComponent
->>>>>>> 9f7c4415b72b8627052e01cf7e1b3f07238363e2
   ],
   imports: [
     BrowserModule, HttpModule,
@@ -75,7 +74,8 @@ export const firebaseConfig ={
     AngularFireAuthModule,
     RouterModule.forRoot(My_Routes)
   ],
-  providers: [{provide: AuthHttp, useFactory: authHttpServiceFactory, deps:[Http, RequestOptions]},
+  providers: [
+    {provide: AuthHttp, useFactory: authHttpServiceFactory, deps:[Http, RequestOptions]},
     LoginService, 
     InboxService,
     SentMailsService,

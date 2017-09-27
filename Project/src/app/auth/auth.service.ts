@@ -12,7 +12,7 @@ export class AuthService {
     responseType: 'token id_token',
     audience: 'https://mwaproject.auth0.com/userinfo',
     redirectUri: 'http://localhost:4200/home',      
-    scope: 'openid'
+    scope: 'openid profile'
   });
 
   constructor(public router: Router) {}
@@ -25,7 +25,7 @@ export class AuthService {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
-        localStorage.setItem("profile", JSON.stringify(authResult));
+        //localStorage.setItem("profile", JSON.stringify(authResult));
         this.setSession(authResult);
         this.router.navigate(['/home']);
       } else if (err) {
@@ -58,6 +58,9 @@ export class AuthService {
     // access token's expiry time
     const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
+  }
+  getUser(){
+    return JSON.parse(localStorage.getItem('profile'));
   }
 
 }
