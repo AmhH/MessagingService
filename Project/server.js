@@ -1,3 +1,4 @@
+//@Author: Ameha
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -9,8 +10,11 @@ var cors = require('cors');
 var jwt = require('express-jwt');
 var jwks = require('jwks-rsa');
 
+//import routing modules 
 const api = require('./server/routes/api');
-const mail = require('./server/routes/mail');
+const inbox = require('./server/routes/inbox');
+const sent = require('./server/routes/sent');
+const trash = require('./server/routes/trash');
 const contact = require('./server/routes/contact');
 
 var app = express();
@@ -19,6 +23,7 @@ var app = express();
 app.set('views', path.join(__dirname, './server/views'));
 app.set('view engine', 'ejs');
 app.disable('x-poweres-by');
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
@@ -50,10 +55,12 @@ app.get('/api/users',/* authCheck, */function(req, res) {
   res.json(users);
 });
 
-// API location
+// API location url
 app.use('/api', api);
-app.use('/mail', mail);
-//app.use('/contact', contact);
+app.use('/inbox', inbox);
+app.use('/sent', sent);
+app.use('/trash', trash);
+app.use('/contact', contact);
 
 // Send all other requests to the Angular app
 app.get('*', (req, res) => {
