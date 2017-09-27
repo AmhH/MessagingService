@@ -24,6 +24,7 @@
     "angular-jwt": "^0.1.9",
     "angular2-jwt": "^0.2.3",
     "angularfire2": "^4.0.0-rc.2",
+    "auth0-js": "^8.10.1",
     "auth0-lock": "^10.21.1",
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",

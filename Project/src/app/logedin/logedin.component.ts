@@ -6,10 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./logedin.component.css']
 })
 export class LogedinComponent implements OnInit {
-
-  constructor() { }
-
+  private first:boolean;
+  constructor() {
+   
+   }
+  firstTime(){
+      return this.first;
+  }
+  reverse(){
+    this.first = false;
+  }
   ngOnInit() {
+    this.first = true;
   }
 
 }

@@ -41,7 +41,7 @@ router.get('/inbox/:username', /*authCheck,*/ (req, res) => {
     });
 
 // Get all sent
-router.get('/sent/:username',authCheck, (req, res) => {
+router.get('/sent/:username',/*authCheck,*/ (req, res) => {
     User.aggregate([{'$match':{'userCredential.userName':req.params.username}},{'$project':{'messages':1}},
                         {'$unwind':'$messages'},{'$match':{'messages.label':'sent'}}/*,
                         {'$group':{'_id':'$_id','messages':{'$push':'$messages'}}}*/,{'$project':{'_id':0}}])

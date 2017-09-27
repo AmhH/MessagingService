@@ -2,27 +2,17 @@
 
     <main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
       <h1>Inbox</h1>
-
-     
-
-      <h2>Section title</h2>
       <div class="table-responsive">
         <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>status</th>
-              <th>mailer</th>
-              <th>subject</th>
-            </tr>
-          </thead>
+         
           <tbody>
             <tr *ngFor = "let mail of inboxUserMail; let num = index">
-              <td>check box</td>
-              <td>{{ mail[num].messages.content }}</td>
-              <td>{{ mail }}</td>
+              <td><input type="checkbox"></td>
+              <td><a [routerLink] = "['detail', mail[num].messages]">{{ mail['mailer'] }}</a></td>
+              <td><a [routerLink] = "['detail', mail[num].messages]">{{mail['subject'] }}</a></td>
             </tr>
           </tbody>
         </table>
       </div>
     </main>
- 
+    <router-outlet></router-outlet>

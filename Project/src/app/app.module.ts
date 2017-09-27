@@ -11,6 +11,8 @@ import { AngularFireAuthModule} from 'angularfire2/auth';
 
 //auth0 modules
 import { provideAuth, AuthHttp, AuthConfig } from 'angular2-jwt';
+import { AuthService } from './auth/auth.service';
+
 //componenets 
 import { InboxComponent } from './inbox/inbox.component';
 import { LoginService } from './login.service';
@@ -18,21 +20,34 @@ import { LogoutComponent } from './logout/logout.component';
 import { LogedinComponent } from './logedin/logedin.component';
 //services
 import { InboxService } from "./service/inbox.service";
+import { SentComponent } from './sent/sent.component';
+import { DetailComponent } from './detail/detail.component';
+import { SentMailsService } from './service/sent-mails.service';
 
+// export function authHttpServiceFactory(http: Http, options: RequestOptions ){
+//     return new AuthHttp(new AuthConfig({
+//       tokenName: 'id_token'
+//     }), http, options);
+// }
 
-export function authHttpServiceFactory(http: Http, options: RequestOptions ){
-    return new AuthHttp(new AuthConfig({
-      tokenName: 'id_token'
-    }), http, options);
+export function authHttpServiceFactory(http: Http, options: RequestOptions) {
+  return new AuthHttp(new AuthConfig({
+    tokenGetter: (() => localStorage.getItem('access_token'))
+  }), http, options);
 }
 
 const My_Routes: Routes = [
   {path: '', redirectTo:'home',pathMatch:'full'},
   {path: 'home', component:AppComponent},
   {path: 'logedin', component:LogedinComponent, children: [
-    {path: 'inbox', component:InboxComponent},
+    {path: 'inbox', component:InboxComponent, children:[
+      {path: 'detail', component:DetailComponent}
+    ]},
+    {path: 'sent', component:SentComponent, children:[
+      {path: 'detail', component:DetailComponent}
+    ]},
     {path: 'logout', component:LogoutComponent}
-  ]},
+  ]}
 ];
 export const firebaseConfig ={
   apiKey: "AIzaSyApuY_WppNagNRA9PhdfPba0vnT0xdRfEI",
@@ -47,7 +62,9 @@ export const firebaseConfig ={
     AppComponent,
     InboxComponent,
     LogoutComponent,
-    LogedinComponent
+    LogedinComponent,
+    SentComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule, HttpModule,
@@ -56,7 +73,12 @@ export const firebaseConfig ={
     AngularFireAuthModule,
     RouterModule.forRoot(My_Routes)
   ],
-  providers: [{provide: AuthHttp, useFactory: authHttpServiceFactory, deps:[Http, RequestOptions]},LoginService, InboxService],
+  providers: [{provide: AuthHttp, useFactory: authHttpServiceFactory, deps:[Http, RequestOptions]},
+    LoginService, 
+    InboxService,
+    SentMailsService,
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

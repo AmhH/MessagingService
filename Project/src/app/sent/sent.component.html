@@ -1,0 +1,16 @@
+<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
+    <h1>Sent Mails</h1>
+    <div class="table-responsive">
+      <table class="table table-striped">
+       
+        <tbody>
+          <tr *ngFor = "let mail of sentUserMail; let num = index">
+            <td><input type="checkbox"></td>
+            <td><a [routerLink] = "['detail', mail[num].messages]">{{ mail[num].messages.mailer }}</a></td>
+            <td><a [routerLink] = "['detail', mail[num].messages]">{{mail[num].messages.subject }}</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+  <router-outlet></router-outlet>
