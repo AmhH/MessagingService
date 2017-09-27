@@ -13,7 +13,7 @@ router.get('/all/:username',(req, res) => {
                 if(err){
                      res.json(err);
                 } else {
-                     console.log(data.length)
+                     //console.log(data.length)
                      res.json(data);
             }
         });
@@ -28,7 +28,7 @@ router.get('/:username',  (req, res) => {
                                 if(err){
                                     res.json(err);
                                 } else {
-                                    console.log(data.length)
+                                    //console.log(data.length)
                                     res.json(data);
                             }
                         });
