@@ -9,7 +9,7 @@ private email:string;
 private fullUrl:string;
   constructor(private http: AuthHttp, private authService: AuthService ) {
     this.email = this.authService.getUser().idTokenPayload.name;
-    this.fullUrl = 'http:/localhost:9999/mail/' + this.email;
+    this.fullUrl = 'http:/localhost:9999/sent' + this.email;
    
   }
   sendMail(data) {
@@ -17,6 +17,6 @@ private fullUrl:string;
     let myHeader = new Headers({'Content-Type': 'application/json'});
     let option = new RequestOptions({ headers: myHeader });
       data.email = this.email;
-      this.http.post('http:/localhost:9999/mail/', data);
+      this.http.post('http:/localhost:9999/', data);
    }
 }

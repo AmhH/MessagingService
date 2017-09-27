@@ -13,7 +13,7 @@ console.log(this.authService.getUser());
 console.log(this.authService.getUser()); 
     this.email = this.authService.getUser().idTokenPayload.name;
     console.log(this.email + " asdfasdas")  ;
-    this.fullUrl = 'http://localhost:9999/mail/inbox/' + this.email; 
+    this.fullUrl = 'http://localhost:9999/inbox/' + this.email; 
   }
   getInboxData(){
     return this.http.get(this.fullUrl,);
