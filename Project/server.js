@@ -60,7 +60,7 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
-/*app.use(function(req, res,next) {
+app.use(function(req, res,next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
@@ -71,7 +71,7 @@ app.get('*', (req, res) => {
     // to the API (e.g. in case you use sessions)
     res.setHeader('Access-Control-Allow-Credentials', true);
 next();
-});*/
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

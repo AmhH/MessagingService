@@ -17,7 +17,7 @@ export class ComposeComponent implements OnInit {
       'subject': ['', Validators.required],
       'content' : ['', Validators.compose([Validators.required, Validators.minLength(5)])]
     });
-    this.myForm.statusChanges.subscribe(data => console.log(data));
+    //this.myForm.statusChanges.subscribe(data => console.log(data));
    }
 
    onSubmit() {
@@ -27,7 +27,7 @@ export class ComposeComponent implements OnInit {
           content: this.myForm.value.content
      }
     this.dataService.sendMail(data);
-    this.router.navigateByUrl('/inbox');
+    this.router.navigateByUrl('logedin/inbox');
   }
 
   close(){

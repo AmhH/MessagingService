@@ -1,7 +1,9 @@
-<table class="compose" >
+
+<br><br><br><br>  <br>
+<table>
   <tr>
     <td>
-      <button id="btn" (click) = "close()">X</button>
+      
       <form [formGroup] = "myForm" (ngSubmit)="onSubmit()" >
         <p><label>TO: <input type="text" formControlName= "receiver"/></label></p>
         <div class="errors" *ngIf="!myForm.controls['receiver'].valid">Required</div>

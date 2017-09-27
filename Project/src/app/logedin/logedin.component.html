@@ -13,7 +13,7 @@
             <a [routerLink] = "['sent']">Sent mail</a>
           </li>
           <li>
-            <a href="#">Compose</a>
+            <a [routerLink] = "['compose']">Compose</a>
           </li>
         </ul>
   
@@ -34,10 +34,9 @@
   <div class="rightBody">
       <div class="row">
         <main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
-          <div *ngIf="firstTime()">
-            <app-inbox></app-inbox>
-          </div>  
-           <div><router-outlet></router-outlet></div> 
+           
+           <router-outlet></router-outlet>
+
         </main>
       </div>
   </div>

@@ -9,7 +9,8 @@ private email:string;
 private fullUrl:string;
   constructor(private http: AuthHttp, private authService: AuthService ) {
     
-console.log(this.authService.getUser());   
+console.log(this.authService.getUser());  
+console.log(this.authService.getUser()); 
     this.email = this.authService.getUser().idTokenPayload.name;
     console.log(this.email + " asdfasdas")  ;
     this.fullUrl = 'http://localhost:9999/mail/inbox/' + this.email; 

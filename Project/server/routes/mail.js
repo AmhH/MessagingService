@@ -70,10 +70,11 @@ router.get('/trash/:username'/*,authCheck*/, (req, res) => {
                         });
     });
 
-router.post('/:username',/*authCheck, */(req, res) => {
+router.post('/',/*authCheck, */(req, res) => {
+    console.log( req.body.receiver);
     User.findOneAndUpdate({'userCredential.userName': req.body.receiver},
                             {'$push':{'messages':{
-                                mailer: req.params.username,
+                                mailer: req.body.email,
                                 receiver: req.body.receiver,
                                 subject: req.body.subject,
                                 content: req.body.content,

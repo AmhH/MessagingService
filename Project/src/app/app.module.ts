@@ -4,6 +4,8 @@ import { RouterModule, Routes} from '@angular/router';
 import { AppComponent } from './app.component';
 import { Http, RequestOptions } from '@angular/http';
 import { HttpModule } from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 //firebase modules
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule} from 'angularfire2/database';
@@ -24,6 +26,7 @@ import { SentComponent } from "./sent/sent.component";
 import { InboxService } from "./service/inbox.service";
 import { ComposeComponent } from './compose/compose.component';
 import { SentMailsService } from "./service/sent-mails.service";
+import { DataService } from "./service/data.service";
 
 // export function authHttpServiceFactory(http: Http, options: RequestOptions ){
 //     return new AuthHttp(new AuthConfig({
@@ -47,6 +50,7 @@ const My_Routes: Routes = [
     {path: 'sent', component:SentComponent, children:[
       {path: 'detail', component:DetailComponent}
     ]},
+    {path: 'compose', component:ComposeComponent},
     {path: 'logout', component:LogoutComponent}
   ]}
 ];
@@ -65,21 +69,25 @@ export const firebaseConfig ={
     LogoutComponent,
     LogedinComponent,
     SentComponent,
-    DetailComponent
+    DetailComponent,
+    ComposeComponent
   ],
   imports: [
     BrowserModule, HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    RouterModule.forRoot(My_Routes)
+    RouterModule.forRoot(My_Routes),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: AuthHttp, useFactory: authHttpServiceFactory, deps:[Http, RequestOptions]},
     LoginService, 
     InboxService,
     SentMailsService,
-    AuthService
+    AuthService,
+    DataService
   ],
   bootstrap: [AppComponent]
 })

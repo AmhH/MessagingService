@@ -19,7 +19,7 @@ export class AppComponent {
     // else    
     //   this.loginService.login();
     auth.handleAuthentication();
-    if(auth.isAuthenticated()) this.router.navigate(['logedin']);
+    if(auth.isAuthenticated()) this.router.navigate(['logedin/inbox']);
     else auth.login();
     
   }
