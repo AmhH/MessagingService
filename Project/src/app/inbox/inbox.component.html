@@ -16,10 +16,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor = "let mail of inboxUserMail">
+            <tr *ngFor = "let mail of inboxUserMail; let num = index">
               <td>check box</td>
-              <td>{{mail.mailer}}</td>
-              <td>{{mail.subject}}</td>
+              <td>{{ mail[num].messages.content }}</td>
+              <td>{{ mail }}</td>
             </tr>
           </tbody>
         </table>

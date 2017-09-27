@@ -9,11 +9,13 @@ import { InboxService } from '../service/inbox.service';
   styleUrls: ['./inbox.component.css']
 })
 export class InboxComponent implements OnInit {
-  private inboxUserMail;
+  inboxUserMail;
   constructor(private inboxService:InboxService) {
     this.inboxService.getInboxData().subscribe(
       data => {
-        this.inboxUserMail = data.json();
+        this.inboxUserMail = Array.of(data.json());
+        console.log(this.inboxUserMail);
+        console.log(this.inboxUserMail.length)
       }
     ); 
   }
