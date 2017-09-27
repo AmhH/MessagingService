@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { InboxService } from '../service/inbox.service';
+
+
 
 @Component({
   selector: 'app-inbox',
@@ -6,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./inbox.component.css']
 })
 export class InboxComponent implements OnInit {
-
-  constructor() { 
-    
+  private inboxUserMail;
+  constructor(private inboxService:InboxService) {
+    this.inboxService.getInboxData().subscribe(
+      data => {
+        this.inboxUserMail = data.json();
+      }
+    ); 
   }
 
   ngOnInit() {

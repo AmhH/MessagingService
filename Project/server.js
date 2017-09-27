@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongo = require('mongoskin');
+var cors = require('cors');
 
 const api = require('./server/routes/api');
 const mail = require('./server/routes/mail');
@@ -33,6 +34,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, './server/public')));
+app.use(cors());
 
 // Authentication middleware provided by express-jwt.
 // This middleware will check incoming requests for a valid JWT on any routes that it is applied to.
@@ -56,7 +58,7 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
-app.use(function(req, res,next) {
+/*app.use(function(req, res,next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
@@ -67,7 +69,7 @@ app.use(function(req, res,next) {
     // to the API (e.g. in case you use sessions)
     res.setHeader('Access-Control-Allow-Credentials', true);
 next();
-});
+});*/
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

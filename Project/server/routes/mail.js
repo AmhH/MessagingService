@@ -6,12 +6,12 @@ const User = require('./model').User;
 // Authentication middleware provided by express-jwt.
 // This middleware will check incoming requests for a valid JWT on any routes that it is applied to.
 var authCheck = jwt({
-  secret: new Buffer('_YcCvmGJcnuuXT7AYA_Jy6CdcGFRGzRl', 'base64'),
-  audience: 'mwaproject.auth0.com'
+  secret: new Buffer('6GwUZHghGVDhSO4wctY0pSikpI7fWKOr5ckslfX51o4ZJ2OxN', 'base64'),
+  audience: '_YcCvmGJcnuuXT7AYA_Jy6CdcGFRGzRl'
 });
 
 // Get all mail
-router.get('/:username',/*authCheck, */(req, res) => {
+router.get('/:username',authCheck,(req, res) => {
     var inbox;
         User.find({'userCredential.userName': req.params.username}, {'messages':1, '_id':0})
             .sort('messages.date')
@@ -26,7 +26,7 @@ router.get('/:username',/*authCheck, */(req, res) => {
 });
 
 // Get all inbox
-router.get('/inbox/:username',/*authCheck, */(req, res) => {
+router.get('/inbox/:username', /*authCheck,*/ (req, res) => {
     User.aggregate([{'$match':{'userCredential.userName':'abaams78@gmail.com'}},{'$project':{'messages':1}},
                         {'$unwind':'$messages'},{'$match':{'messages.label':'inbox'}}/*,
                         {'$group':{'_id':'$_id','messages':{'$push':'$messages'}}}*/,{'$project':{'_id':0}}])
@@ -41,7 +41,7 @@ router.get('/inbox/:username',/*authCheck, */(req, res) => {
     });
 
 // Get all sent
-router.get('/sent/:username',/*authCheck, */(req, res) => {
+router.get('/sent/:username',authCheck, (req, res) => {
     User.aggregate([{'$match':{'userCredential.userName':'abaams78@gmail.com'}},{'$project':{'messages':1}},
                         {'$unwind':'$messages'},{'$match':{'messages.label':'sent'}}/*,
                         {'$group':{'_id':'$_id','messages':{'$push':'$messages'}}}*/,{'$project':{'_id':0}}])
@@ -56,7 +56,7 @@ router.get('/sent/:username',/*authCheck, */(req, res) => {
     });
 
     // Get all trash
-router.get('/trash/:username',/*authCheck, */(req, res) => {
+router.get('/trash/:username',authCheck, (req, res) => {
     User.aggregate([{'$match':{'userCredential.userName':'abaams78@gmail.com'}},{'$project':{'messages':1}},
                         {'$unwind':'$messages'},{'$match':{'messages.label':'trash'}}/*,
                         {'$group':{'_id':'$_id','messages':{'$push':'$messages'}}}*/,{'$project':{'_id':0}}])
