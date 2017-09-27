@@ -70,10 +70,10 @@ router.get('/trash/:username'/*,authCheck*/, (req, res) => {
                         });
     });
 
-router.post('/',/*authCheck, */(req, res) => {
+router.post('/:username',/*authCheck, */(req, res) => {
     User.findOneAndUpdate({'userCredential.userName': req.body.receiver},
                             {'$push':{'messages':{
-                                mailer: req.body.mailer,
+                                mailer: req.params.username,
                                 receiver: req.body.receiver,
                                 subject: req.body.subject,
                                 content: req.body.content,
@@ -85,7 +85,7 @@ router.post('/',/*authCheck, */(req, res) => {
                                 if(err) res.json(err);
                                 //else res.json(data);
                             });
-    User.findOneAndUpdate({'userCredential.userName': req.body.mailer},
+    User.findOneAndUpdate({'userCredential.userName': req.params.username},
                             {'$push':{'messages':{
                                 mailer: req.body.mailer,
                                 receiver: req.body.receiver,

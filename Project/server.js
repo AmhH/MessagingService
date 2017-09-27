@@ -38,7 +38,7 @@ var jwtCheck = jwt({
         jwksRequestsPerMinute: 5,
         jwksUri: "https://mwaproject.auth0.com/.well-known/jwks.json"
     }),
-    audience: 'http://localhost:9999',
+    audience: '_YcCvmGJcnuuXT7AYA_Jy6CdcGFRGzRl',
     issuer: "https://mwaproject.auth0.com/",
     algorithms: ['RS256']
 });

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, FormControl, Validators, FormBuilder, FormArray, FormGroup } from '@angular/forms';
-
-import { InboxService } from '../service/inbox.service';
+import { Router } from '@angular/router'
+import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-compose',
@@ -11,7 +11,7 @@ import { InboxService } from '../service/inbox.service';
 export class ComposeComponent implements OnInit {
   myForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private dataService: InboxService) {
+  constructor(private fb: FormBuilder, private dataService: DataService, private router: Router) {
     this.myForm = this.fb.group({
       'receiver' : ['', Validators.compose([Validators.required, Validators.email])],
       'subject': ['', Validators.required],
@@ -21,9 +21,18 @@ export class ComposeComponent implements OnInit {
    }
 
    onSubmit() {
-    console.log(this.myForm.value.content);
+     const data = {
+          receiver: this.myForm.value.receiver,
+          subject: this.myForm.value.subject,
+          content: this.myForm.value.content
+     }
+    this.dataService.sendMail(data);
+    this.router.navigateByUrl('/inbox');
   }
 
+  close(){
+    this.router.navigateByUrl('/inbox');
+  }
   ngOnInit() {
   }
 
