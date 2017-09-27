@@ -10,7 +10,7 @@ var authCheck = jwt({
   audience: 'mwaproject.auth0.com'
 });
 
-// Get all mail
+// Get all contacts
 router.get('/:username',/*authCheck, */(req, res) => {
         User.find({'userCredential.userName': req.params.username}, {'contacts':1, '_id':0})
             .exec(function(err, data){
@@ -22,6 +22,20 @@ router.get('/:username',/*authCheck, */(req, res) => {
             }
         });
 });
+
+/*router.get('/:username',authCheck, (req, res) => {
+        User.aggregate([{'$match':{'userCredential.userName':'abaams78@gmail.com'}},{'$project':{'messages':1}},
+                        {'$unwind':'$messages'},{'$match':{'messages.label':'sent'}},{'$project':{'_id':0}}])
+                        .exec(function(err, data){
+                                if(err){
+                                    res.json(err);
+                                } else {
+                                    console.log(data.length)
+                                    res.json(data);
+                            }
+                        });
+
+});*/
 
 router.post('/:username',/*authCheck, */(req, res) => {
     User.findOneAndUpdate({'userCredential.userName': req.body.username},

@@ -27,7 +27,7 @@ router.get('/:username',authCheck,(req, res) => {
 
 // Get all inbox
 router.get('/inbox/:username', /*authCheck,*/ (req, res) => {
-    User.aggregate([{'$match':{'userCredential.userName':'abaams78@gmail.com'}},{'$project':{'messages':1}},
+    User.aggregate([{'$match':{'userCredential.userName':req.params.username}},{'$project':{'messages':1}},
                         {'$unwind':'$messages'},{'$match':{'messages.label':'inbox'}}/*,
                         {'$group':{'_id':'$_id','messages':{'$push':'$messages'}}}*/,{'$project':{'_id':0}}])
                         .exec(function(err, data){
@@ -42,7 +42,7 @@ router.get('/inbox/:username', /*authCheck,*/ (req, res) => {
 
 // Get all sent
 router.get('/sent/:username',authCheck, (req, res) => {
-    User.aggregate([{'$match':{'userCredential.userName':'abaams78@gmail.com'}},{'$project':{'messages':1}},
+    User.aggregate([{'$match':{'userCredential.userName':req.params.username}},{'$project':{'messages':1}},
                         {'$unwind':'$messages'},{'$match':{'messages.label':'sent'}}/*,
                         {'$group':{'_id':'$_id','messages':{'$push':'$messages'}}}*/,{'$project':{'_id':0}}])
                         .exec(function(err, data){
@@ -57,7 +57,7 @@ router.get('/sent/:username',authCheck, (req, res) => {
 
     // Get all trash
 router.get('/trash/:username',authCheck, (req, res) => {
-    User.aggregate([{'$match':{'userCredential.userName':'abaams78@gmail.com'}},{'$project':{'messages':1}},
+    User.aggregate([{'$match':{'userCredential.userName':req.params.username}},{'$project':{'messages':1}},
                         {'$unwind':'$messages'},{'$match':{'messages.label':'trash'}}/*,
                         {'$group':{'_id':'$_id','messages':{'$push':'$messages'}}}*/,{'$project':{'_id':0}}])
                         .exec(function(err, data){
