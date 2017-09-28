@@ -19,4 +19,8 @@ private fullUrl:string;
       console.log('email '+this.email);
       this.http.post('http://localhost:9999/sent',data).subscribe(data => console.log(data.json()));
    }
+
+   getContacts(){
+     return this.http.get('http://localhost:9999/contact')
+   }
 }
