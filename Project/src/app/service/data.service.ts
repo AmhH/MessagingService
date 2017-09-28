@@ -21,6 +21,10 @@ private fullUrl:string;
    }
 
    getContacts(){
-     return this.http.get('http://localhost:9999/contact')
+     return this.http.get('http://localhost:9999/contact');
+   }
+
+   getTrash(){
+     return this.http.get('http://localhost:9999/trash/'+ this.email);
    }
 }

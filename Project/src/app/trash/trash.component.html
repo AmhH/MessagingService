@@ -1,0 +1,15 @@
+<main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
+      <h1>Trash Mail</h1>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <tbody>
+            <tr *ngFor = "let mail of trashMail; let num = index">
+              <td><input type="checkbox"></td>
+              <td><a [routerLink] = "['detail', mail['messages']._id]">{{ mail['messages'].mailer }}</a></td>
+              <td><a [routerLink] = "['detail', mail['messages']._id]">{{ mail['messages'].subject }}</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+    <router-outlet></router-outlet>

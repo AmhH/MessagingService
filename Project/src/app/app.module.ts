@@ -28,6 +28,7 @@ import { ComposeComponent } from './compose/compose.component';
 import { SentMailsService } from "./service/sent-mails.service";
 import { DataService } from "./service/data.service";
 import { ContactComponent } from './contact/contact.component';
+import { TrashComponent } from './trash/trash.component';
 
 // export function authHttpServiceFactory(http: Http, options: RequestOptions ){
 //     return new AuthHttp(new AuthConfig({
@@ -72,7 +73,8 @@ export const firebaseConfig ={
     SentComponent,
     DetailComponent,
     ComposeComponent,
-    ContactComponent
+    ContactComponent,
+    TrashComponent
   ],
   imports: [
     BrowserModule, HttpModule,
