@@ -28,11 +28,10 @@ import { ComposeComponent } from './compose/compose.component';
 import { SentMailsService } from "./service/sent-mails.service";
 import { DataService } from "./service/data.service";
 import { ContactComponent } from './contact/contact.component';
-<<<<<<< HEAD
 import { SentDetailComponent } from './sent-detail/sent-detail.component';
-=======
 import { TrashComponent } from './trash/trash.component';
->>>>>>> dada6549c2b53663bab7af8b1da8d0b57cdc0349
+import { MyGuardService } from './my-guard.service';
+import { MyPipePipe } from './my-pipe.pipe';
 
 // export function authHttpServiceFactory(http: Http, options: RequestOptions ){
 //     return new AuthHttp(new AuthConfig({
@@ -47,17 +46,18 @@ export function authHttpServiceFactory(http: Http, options: RequestOptions) {
 }
 
 const My_Routes: Routes = [
-  {path: '', redirectTo:'home',pathMatch:'full'},
-  {path: 'home', component:AppComponent},
+  {path: '', redirectTo:'home',pathMatch:'full', canActivate: [MyGuardService]},
+  {path: 'home', component:AppComponent, canActivate: [MyGuardService]},
   {path: 'logedin', component:LogedinComponent, children: [
     {path: 'inbox', component:InboxComponent, children:[
-      {path: 'detail/:name', component:DetailComponent}
-    ]},
+      {path: 'detail/:name', component:DetailComponent, canActivate: [MyGuardService]}
+    ], canActivate: [MyGuardService]},
     {path: 'sent', component:SentComponent, children:[
-      {path: 'detail/:name', component:SentDetailComponent}
-    ]},
-    {path: 'compose', component:ComposeComponent},
-    {path: 'contact', component:ContactComponent},
+      {path: 'detail/:name', component:SentDetailComponent, canActivate: [MyGuardService]}
+    ], canActivate: [MyGuardService]},
+    {path: 'compose', component:ComposeComponent, canActivate: [MyGuardService]},
+    {path: 'contact', component:ContactComponent, canActivate: [MyGuardService]},
+    {path: 'trash', component:TrashComponent, canActivate: [MyGuardService]},
     {path: 'logout', component:LogoutComponent}
   ]}
 ];
@@ -78,12 +78,10 @@ export const firebaseConfig ={
     SentComponent,
     DetailComponent,
     ComposeComponent,
+    SentDetailComponent,
     ContactComponent,
-<<<<<<< HEAD
-    SentDetailComponent
-=======
-    TrashComponent
->>>>>>> dada6549c2b53663bab7af8b1da8d0b57cdc0349
+    TrashComponent,
+    MyPipePipe
   ],
   imports: [
     BrowserModule, HttpModule,
@@ -100,7 +98,8 @@ export const firebaseConfig ={
     InboxService,
     SentMailsService,
     AuthService,
-    DataService
+    DataService,
+    MyGuardService
   ],
   bootstrap: [AppComponent]
 })

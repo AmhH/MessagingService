@@ -4,7 +4,7 @@
     <input placeholder="Search Query" name="search" class="form-control" type="text" #input [(ngModel)]= "val" value="eu" >
     <div *ngFor="let contact of contactsFrom; let num = index">   
             <div *ngFor="let cont of contact.contacts; let num = index">  
-                <label *ngIf="checker(cont.fullname)">
+                <label *ngIf="cont.fullname | myPipe: input.value ">
                 {{num+1}}: {{cont.fullname}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{cont.email}}
                 </label>
             </div>
