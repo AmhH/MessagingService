@@ -26,12 +26,12 @@ export class ComposeComponent implements OnInit {
           subject: this.myForm.value.subject,
           content: this.myForm.value.content
      }
-    this.dataService.sendMail(data);
-    this.router.navigateByUrl('logedin/inbox');
+      this.dataService.sendMail(data);
+      this.router.navigateByUrl('logedin/inbox');
   }
 
   close(){
-    this.router.navigateByUrl('/inbox');
+    this.router.navigateByUrl('logedin/inbox');
   }
   ngOnInit() {
   }

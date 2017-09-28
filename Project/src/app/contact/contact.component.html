@@ -1,0 +1,6 @@
+  <input type="text" #input [(ngModel)]= "val" value="eu" >
+    <div *ngFor="let contact of contacts; let num = index">
+      <label *ngIf="checker(contact.['contacts'].fullname)">
+        {{num+1}}: Name: {{contact.['contacts'].fullname}} Email: {{contact.['contacts'].email}}
+      </label>
+    </div>

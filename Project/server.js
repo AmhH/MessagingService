@@ -48,7 +48,7 @@ var jwtCheck = jwt({
     algorithms: ['RS256']
 });
 
-app.use(jwtCheck);
+//app.use(jwtCheck);
 
 //how to check if authenticated
 app.get('/api/users',/* authCheck, */function(req, res) {
