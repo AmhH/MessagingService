@@ -13,10 +13,10 @@ private fullUrl:string;
    
   }
   sendMail(data) {
-    console.log(this.email);
     let myHeader = new Headers({'Content-Type': 'application/json'});
     let option = new RequestOptions({ headers: myHeader });
       data.email = this.email;
-      this.http.post('http:/localhost:9999/', data);
+      console.log('email '+this.email);
+      this.http.post('http://localhost:9999/sent',data).subscribe(data => console.log(data.json()));
    }
 }

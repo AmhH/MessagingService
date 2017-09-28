@@ -9,7 +9,7 @@ export class SentMailsService {
 
   constructor(private http: AuthHttp, private authService: AuthService ) {
     this.email = this.authService.getUser().idTokenPayload.name;
-    console.log(this.email + " asdfasdas")  ;
+    //console.log(this.email + " asdfasdas")  ;
     this.fullUrl = 'http://localhost:9999/sent/' + this.email;
    }
 

@@ -12,10 +12,17 @@ private fullUrl:string;
 console.log(this.authService.getUser());  
 console.log(this.authService.getUser()); 
     this.email = this.authService.getUser().idTokenPayload.name;
-    console.log(this.email + " asdfasdas")  ;
     this.fullUrl = 'http://localhost:9999/inbox/' + this.email; 
   }
   getInboxData(){
     return this.http.get(this.fullUrl,);
   }
+
+  sendMail(data) {
+    /* let myHeader = new Headers({'Content-Type': 'application/json'});
+    let option = new RequestOptions({ headers: myHeader }); */
+      data.email = this.email;
+      console.log(this.email);
+      this.http.post('http://localhost:9999/sent', data);
+   }
 }

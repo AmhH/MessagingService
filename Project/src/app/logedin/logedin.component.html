@@ -4,28 +4,27 @@
 <div class="mainBody">
     <div class="leftBody">
       <nav>
-        <ul>  
+        <ul class="btn-group-vertical btn-block" >  
           <br><br><br><br><br>
+        
           <li>
-            <a [routerLink] = "['inbox']" >Inbox</a>
+            <a class="btn btn-default btn-block"  [routerLink] = "['inbox']" >Inbox</a>
           </li>
           <li>
-            <a [routerLink] = "['sent']">Sent mail</a>
+            <a class="btn btn-default btn-block" [routerLink] = "['sent']">Sent mail</a>
           </li>
           <li>
-            <a [routerLink] = "['compose']">Compose</a>
+            <a class="btn btn-default btn-block" [routerLink] = "['compose']">Compose</a>
           </li>
-        </ul>
-  
-        <ul>
+       
           <li>
-            <a href="#">Trash</a>
+            <a class="btn btn-default btn-block" href="#">Trash</a>
           </li>
           <li>
-            <a href="#">contacts</a>
+            <a class="btn btn-default btn-block" href="#">contacts</a>
           </li>
           <li>
-            <a [routerLink] = "['logout']">Logout</a>
+            <a class="btn btn-default btn-block"  [routerLink] = "['logout']">Logout</a>
           </li>
         </ul>
       </nav>

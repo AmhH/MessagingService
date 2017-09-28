@@ -45,7 +45,7 @@ const My_Routes: Routes = [
   {path: 'home', component:AppComponent},
   {path: 'logedin', component:LogedinComponent, children: [
     {path: 'inbox', component:InboxComponent, children:[
-      {path: 'detail', component:DetailComponent}
+      {path: 'detail/:name', component:DetailComponent}
     ]},
     {path: 'sent', component:SentComponent, children:[
       {path: 'detail', component:DetailComponent}

@@ -12,9 +12,8 @@ export class SentComponent implements OnInit {
     constructor(private sentService:SentMailsService) {
       this.sentService.getsentMails().subscribe(
         data => {
-          this.sentUserMail = Array.of(data.json());
-          console.log(this.sentUserMail);
-          console.log(this.sentUserMail.length)
+          this.sentUserMail = data.json();
+          
         }
       ); 
   }

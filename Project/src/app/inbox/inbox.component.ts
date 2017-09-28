@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InboxService } from '../service/inbox.service';
 
-
-
 @Component({
   selector: 'app-inbox',
   templateUrl: './inbox.component.html',
@@ -13,9 +11,11 @@ export class InboxComponent implements OnInit {
   constructor(private inboxService:InboxService) {
     this.inboxService.getInboxData().subscribe(
       data => {
-        this.inboxUserMail = Array.of(data.json());
+        this.inboxUserMail = data.json();
         console.log(this.inboxUserMail);
-        console.log(this.inboxUserMail.length)
+        for(let mails of this.inboxUserMail)
+        console.log(mails['messages']);
+        console.log(this.inboxUserMail.length);
       }
     ); 
   }
