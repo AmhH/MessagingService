@@ -21,8 +21,16 @@ private fullUrl:string;
    }
 
    getContacts(){
+<<<<<<< HEAD
      
     console.log('hello from data contact');
      return this.http.get('http://localhost:9999/contact/' + this.email);
+=======
+     return this.http.get('http://localhost:9999/contact');
+   }
+
+   getTrash(){
+     return this.http.get('http://localhost:9999/trash/'+ this.email);
+>>>>>>> dada6549c2b53663bab7af8b1da8d0b57cdc0349
    }
 }

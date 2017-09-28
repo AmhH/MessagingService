@@ -51,9 +51,7 @@ var jwtCheck = jwt({
 app.use(jwtCheck);
 
 //how to check if authenticated
-app.get('/api/users',/* authCheck, */function(req, res) {
-  res.json(users);
-});
+
 
 // API location url
 app.use('/api', api);
