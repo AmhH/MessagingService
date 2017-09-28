@@ -12,10 +12,6 @@ export class InboxComponent implements OnInit {
     this.inboxService.getInboxData().subscribe(
       data => {
         this.inboxUserMail = data.json();
-        console.log(this.inboxUserMail);
-        for(let mails of this.inboxUserMail)
-        console.log(mails['messages']);
-        console.log(this.inboxUserMail.length);
       }
     ); 
   }

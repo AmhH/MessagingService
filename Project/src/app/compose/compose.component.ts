@@ -27,14 +27,8 @@ export class ComposeComponent implements OnInit {
           subject: this.myForm.value.subject,
           content: this.myForm.value.content
      }
-<<<<<<< HEAD
-    
-    this.dataService.sendMail(data);
-    this.router.navigateByUrl('logedin/inbox');
-=======
       this.dataService.sendMail(data);
       this.router.navigateByUrl('logedin/inbox');
->>>>>>> 038dd9824bf84c2b356166c40672c155162eac29
   }
 
   close(){

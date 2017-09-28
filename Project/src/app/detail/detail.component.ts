@@ -16,14 +16,17 @@ private content:string;
       data => {
         this.inboxService.getInboxData().subscribe(
           data1 => { 
-           console.log(data1);
+           data1.json().forEach(element => {
+             if(element.messages['_id']==data['name']){
+                    this.from = element.messages['mailer'];
+                    this.to = element.messages['receiver'];
+                    this.subject = element.messages['subject'];
+                    this.content = element.messages['content'];
+             }
+           });
           }
         ); 
-        console.log("this is the params" + JSON.stringify(data));
-        this.from = data.mailer;
-        this.to = data.receiver;
-        this.subject = data.subject;
-        this.content = data.content;
+        //console.log("this is the params" + JSON.stringify(data));
       }
     )
   }

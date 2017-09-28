@@ -14,10 +14,9 @@ export class AppComponent {
   private userStaus:boolean;
   constructor(public auth: AuthService, private router: Router){
     
-    // if(this.loginService.isAuthenticated())
-    //     this.route.navigate(['logedin']);
-    // else    
-    //   this.loginService.login();
+   
+    
+    //auth.login();
     auth.handleAuthentication();
     if(auth.isAuthenticated()) this.router.navigate(['logedin/inbox']);
     else auth.login();

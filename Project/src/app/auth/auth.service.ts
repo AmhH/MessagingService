@@ -25,7 +25,7 @@ export class AuthService {
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         window.location.hash = '';
-        //localStorage.setItem("profile", JSON.stringify(authResult));
+        localStorage.setItem("profile", JSON.stringify(authResult));
         this.setSession(authResult);
         this.router.navigate(['/home']);
       } else if (err) {

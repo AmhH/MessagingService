@@ -9,7 +9,7 @@ private email:string;
 private fullUrl:string;
   constructor(private http: AuthHttp, private authService: AuthService ) {
     this.email = this.authService.getUser().idTokenPayload.name;
-    this.fullUrl = 'http:/localhost:9999/sent' + this.email;
+    this.fullUrl = 'http:/localhost:9999/contact/' + this.email;
    
   }
   sendMail(data) {
@@ -21,6 +21,8 @@ private fullUrl:string;
    }
 
    getContacts(){
-     return this.http.get('http://localhost:9999/contact')
+     
+    console.log('hello from data contact');
+     return this.http.get('http://localhost:9999/contact/' + this.email);
    }
 }

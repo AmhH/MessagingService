@@ -1,6 +1,12 @@
-  <input type="text" #input [(ngModel)]= "val" value="eu" >
-    <div *ngFor="let contact of contacts; let num = index">
-      <label *ngIf="checker(contact.['contacts'].fullname)">
-        {{num+1}}: Name: {{contact.['contacts'].fullname}} Email: {{contact.['contacts'].email}}
-      </label>
+
+<div class="formTable">
+    <label for="search">Search:</label>
+    <input placeholder="Search Query" name="search" class="form-control" type="text" #input [(ngModel)]= "val" value="eu" >
+    <div *ngFor="let contact of contactsFrom; let num = index">   
+            <div *ngFor="let cont of contact.contacts; let num = index">  
+                <label *ngIf="checker(cont.fullname)">
+                {{num+1}}: {{cont.fullname}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{cont.email}}
+                </label>
+            </div>
     </div>
+</div>

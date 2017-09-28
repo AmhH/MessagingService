@@ -28,6 +28,7 @@ import { ComposeComponent } from './compose/compose.component';
 import { SentMailsService } from "./service/sent-mails.service";
 import { DataService } from "./service/data.service";
 import { ContactComponent } from './contact/contact.component';
+import { SentDetailComponent } from './sent-detail/sent-detail.component';
 
 // export function authHttpServiceFactory(http: Http, options: RequestOptions ){
 //     return new AuthHttp(new AuthConfig({
@@ -49,9 +50,10 @@ const My_Routes: Routes = [
       {path: 'detail/:name', component:DetailComponent}
     ]},
     {path: 'sent', component:SentComponent, children:[
-      {path: 'detail', component:DetailComponent}
+      {path: 'detail/:name', component:SentDetailComponent}
     ]},
     {path: 'compose', component:ComposeComponent},
+    {path: 'contact', component:ContactComponent},
     {path: 'logout', component:LogoutComponent}
   ]}
 ];
@@ -72,7 +74,8 @@ export const firebaseConfig ={
     SentComponent,
     DetailComponent,
     ComposeComponent,
-    ContactComponent
+    ContactComponent,
+    SentDetailComponent
   ],
   imports: [
     BrowserModule, HttpModule,

@@ -1,17 +1,23 @@
 
-<br><br><br><br>  <br>
+
+
+<div class="formTable">
 <table>
   <tr>
     <td>
-      
+        <h1>Compose</h1>
       <form [formGroup] = "myForm" (ngSubmit)="onSubmit()" >
-        <p><label>TO: <input type="text" formControlName= "receiver"/></label></p>
-        <div class="errors" *ngIf="!myForm.controls['receiver'].valid">Required</div>
-        <p><label>Subject: <input type="text" formControlName= "subject"/></label></p>
-        <div class="errors" *ngIf="!myForm.controls['subject'].valid">Required</div>
-        <p><textarea rows="10" cols="50" formControlName= "content"></textarea></p>
-        <p><input type="submit" [disabled]="!myForm.valid" value="Send"/></p>
+        <div class="form-group">
+            <label for="to">To:</label>    
+            <input placeholder="name@example.com" name="to" class="form-control" name="to" type="text" formControlName= "receiver"/>
+                    <div class="errors" *ngIf="!myForm.controls['receiver'].valid">Required</div>
+            <input placeholder="Subject" class="form-control" type="text" formControlName= "subject"/>
+                    <div class="errors" *ngIf="!myForm.controls['subject'].valid">Required</div>
+            <textarea placeholder="Write your message here" class="form-control" rows="20" cols="100" formControlName= "content"></textarea>
+            <input type="submit" class="btn btn-primary" [disabled]="!myForm.valid" value="Send"/>
+        </div>
       </form>
     </td>
   </tr>
 </table>
+</div>

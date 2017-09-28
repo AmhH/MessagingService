@@ -9,11 +9,19 @@ import { DataService } from '../service/data.service'
 })
 export class ContactComponent implements OnInit {
   val: string;
-  contacts;
-  constructor(private ds: DataService) {
+  contactsFrom;
+  constructor(private ds: DataService) {    
+    console.log('hello from contactsFrom');
     this.ds.getContacts().subscribe(res => {
-      this.contacts = res.json();
+      this.contactsFrom = res.json();
+      for ( let con of this.contactsFrom){
+        console.log(con.contacts[0].fullname);
+      }
     });
+    //console.log(this.contactsFrom.length);
+   /*  for ( let con of this.contactsFrom){
+      console.log(con.fullname)
+    } */
   }
 
   checker(fullname: string): boolean {
