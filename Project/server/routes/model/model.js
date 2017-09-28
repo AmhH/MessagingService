@@ -1,7 +1,8 @@
 //@Author: Ameha
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/MessaginService',{useMongoClient: true});
-//mongoose.connect('mongodb://username:password@host:port/?database?option...');
+//mlab connection for database 
+//mongoose.connect('mongodb://ameha:ameha@ds155634.mlab.com:55634/messaginservice',{useMongoClient: true});
 var Schema = mongoose.Schema;
 
 var Address = new Schema({ 
