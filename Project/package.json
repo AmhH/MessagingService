@@ -39,7 +39,7 @@
     "mongodb": "^3.1.13",
     "mongoose": "^5.7.5",
     "mongoskin": "^2.1.0",
-    "morgan": "^1.8.2",
+    "morgan": "^1.9.1",
     "rxjs": "^5.4.2",
     "serve-favicon": "^2.4.4",
     "zone.js": "^0.8.14"
